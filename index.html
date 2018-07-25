@@ -27,10 +27,10 @@
     <section>
       <div class="filter-options">
         <h2>Filter Results</h2>
-        <select role="" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select role="" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" tabindex="1">
           <option value="all">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" tabindex="2">
           <option value="all">All Cuisines</option>
         </select>
       </div>
@@ -43,6 +43,7 @@
     crossorigin=""></script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script type="application/javascript" charset="utf-8" src="serviceWorker.js"></script>
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script> -->
 
 
