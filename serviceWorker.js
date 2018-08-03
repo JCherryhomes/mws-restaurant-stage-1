@@ -67,25 +67,6 @@ self.addEventListener('fetch', function (event) {
             });
         })
     );
-
-    // if (requestUrl.origin === location.origin) {
-    //     // app shell (static)
-    //     if (requestUrl.pathname === '/') {
-    //         event.respondWith(caches.match('/'));
-    //         return;
-    //     }
-
-    //     // photos (non-static)
-    //     if (requestUrl.pathname.startsWith('/img/')) {
-    //         event.respondWith(servePhoto(event.request));
-    //         return;
-    //     }
-    // }
-
-    // event.respondWith(
-    //     caches.match(event.request).then(function (response) {
-    //         return response || fetch(event.request)
-    //     }));
 });
 
 // `skipWaiting` if we get the right kind of message from the UI
@@ -95,17 +76,3 @@ self.addEventListener('message', function (event) {
         self.skipWaiting();
     }
 });
-
-function servePhoto(request) {
-    const storageUrl = request.url.replace(/-\d\.jpg$/, '');
-
-    return caches.open(CONTENT_IMG_CACHE)
-        .then(cache => cache.match(storageUrl).then(function (response) {
-            if (response) return response;
-
-            return fetch(request).then(function (networkResponse) {
-                cache.put(storageUrl, networkResponse.clone());
-                return networkResponse;
-            });
-        }));
-}
